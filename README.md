@@ -4,6 +4,9 @@ Previous works have found that generating coherent raw audio waveforms with GANs
 
 Visit our [website](https://melgan-neurips.github.io) for samples. You can try the speech correction application [here](https://www.descript.com/overdub) created based on the end-to-end speech synthesis pipeline using MelGAN.
 
+Check the [slides](melgan_slides.pdf) if you aren't attending the NeurIPS 2019 conference to check out our poster.
+
+
 ## Code organization
 
     ├── README.md             <- Top-level README.
