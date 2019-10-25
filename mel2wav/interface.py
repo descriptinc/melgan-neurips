@@ -41,7 +41,7 @@ class MelVocoder:
         self.fft = Audio2Mel().to(device)
         if github:
             netG = Generator(80, 32, 3).to(device)
-            root = Path(os.path.dirname(__file__))
+            root = Path(os.path.dirname(__file__)).parent
             netG.load_state_dict(torch.load(root / f"models/{model_name}.pt"))
             self.mel2wav = netG
         else:
@@ -68,4 +68,4 @@ class MelVocoder:
 
         """
         with torch.no_grad():
-            return self.mel2wav(mel.to(self.device))
+            return self.mel2wav(mel.to(self.device)).squeeze(1)

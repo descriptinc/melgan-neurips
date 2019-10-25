@@ -30,7 +30,13 @@ Run these commands:
    ls wavs/*.wav | head -n10 > test_files.txt
    ```
 
-## Example
+## Training Example
     . source set_env.sh 0
     # Set PYTHONPATH and use first GPU
     python scripts/train.py --save_path logs/baseline --path <root_data_folder>
+
+
+## PyTorch Hub Example
+    import torch
+    vocoder = torch.hub.load('descriptinc/melgan-neurips', 'load_melgan')
+    vocoder.inverse(audio)  # audio (torch.tensor) -> (batch_size, 80, timesteps)
