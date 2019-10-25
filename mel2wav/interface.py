@@ -4,6 +4,7 @@ from mel2wav.modules import Audio2Mel
 from pathlib import Path
 import yaml
 import torch
+import os
 
 
 def get_default_device():
@@ -40,7 +41,8 @@ class MelVocoder:
         self.fft = Audio2Mel().to(device)
         if github:
             netG = Generator(80, 32, 3).to(device)
-            netG.load_state_dict(torch.load(f"models/{model_name}.pt"))
+            root = Path(os.path.dirname(__file__))
+            netG.load_state_dict(torch.load(root / f"models/{model_name}.pt"))
             self.mel2wav = netG
         else:
             self.mel2wav = load_model(path, device)
