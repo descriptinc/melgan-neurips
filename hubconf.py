@@ -1,5 +1,7 @@
 from mel2wav import MelVocoder
 
+dependencies = ["torch", "librosa", "pyyaml"]
+
 
 def load_melgan(model_name="multi_speaker"):
     """

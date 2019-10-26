@@ -24,9 +24,7 @@ def load_model(mel2wav_path, device=get_default_device()):
     with open(root / "args.yml", "r") as f:
         args = yaml.load(f, Loader=yaml.FullLoader)
     netG = Generator(args.n_mel_channels, args.ngf, args.n_residual_layers).to(device)
-    netG.load_state_dict(
-        torch.load(root / "best_netG.pt", map_location=lambda storage, loc: storage)
-    )
+    netG.load_state_dict(torch.load(root / "best_netG.pt", map_location=device))
     return netG
 
 
@@ -42,7 +40,9 @@ class MelVocoder:
         if github:
             netG = Generator(80, 32, 3).to(device)
             root = Path(os.path.dirname(__file__)).parent
-            netG.load_state_dict(torch.load(root / f"models/{model_name}.pt"))
+            netG.load_state_dict(
+                torch.load(root / f"models/{model_name}.pt", map_location=device)
+            )
             self.mel2wav = netG
         else:
             self.mel2wav = load_model(path, device)
