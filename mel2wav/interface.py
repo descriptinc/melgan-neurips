@@ -1,5 +1,4 @@
-from mel2wav.modules import Generator
-from mel2wav.modules import Audio2Mel
+from mel2wav.modules import Generator, Audio2Mel
 
 from pathlib import Path
 import yaml
