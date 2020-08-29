@@ -26,7 +26,7 @@ Check the [slides](melgan_slides.pdf) if you aren't attending the NeurIPS 2019 c
 Create a raw folder with all the samples stored in `wavs/` subfolder.
 Run these commands:
    ```command
-   ls wavs/*.wav | tail -n+10 > train_files.txt
+   ls wavs/*.wav | tail -n+11 > train_files.txt
    ls wavs/*.wav | head -n10 > test_files.txt
    ```
 
