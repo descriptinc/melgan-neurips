@@ -192,8 +192,9 @@ class Discriminator(nn.Module):
         self.apply(weights_init)
 
     def forward(self, x):
-        results = []
-        for key, disc in self.model.items():
-            results.append(disc(x))
+        results = [self.model["disc_0"](x)]
+        for i in range(1, self.num_D):
             x = self.downsample(x)
+            results.append(self.model[f"disc_{i}"](x))
+
         return results
